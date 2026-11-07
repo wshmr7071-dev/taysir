@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تيسير - منصة الخدمات الطبية والإنسانية المعتمدة</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+  </style>
+</head>
+<body class="pb-28">
+
+  <!-- ================= رأس التطبيق (Header) ================= -->
+  <header class="w-full bg-[#0f685c] text-white shadow-md">
+    <div class="max-w-md mx-auto px-4 py-4 flex flex-col gap-3 text-center">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="bg-white/10 p-2.5 rounded-xl">
+            <i class="fa-solid fa-hand-holding-medical text-xl text-[#2ecc71]"></i>
+          </div>
+          <div class="text-right">
+            <h1 class="text-lg font-bold tracking-wide">تَيْسِير</h1>
+            <p class="text-[11px] text-emerald-100 opacity-90">منصة الخدمات الطبية والإنسانية المعتمدة</p>
+          </div>
+        </div>
+
+        <button onclick="switchTab('donors')" class="bg-[#2ecc71] hover:bg-[#27ae60] text-[#0f685c] font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 text-xs shadow-sm transition active:scale-95">
+          <span>تسجيل تبرع جديد</span>
+          <i class="fa-solid fa-plus text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- شريط التبويبات العلوي -->
+    <nav class="bg-white/10 border-t border-white/10 w-full mt-1">
+      <div class="max-w-md mx-auto flex justify-around items-center text-xs">
+        <button onclick="switchTab('beneficiary')" id="tab-beneficiary" class="w-1/3 py-3 text-center font-bold border-b-4 border-[#2ecc71] text-white transition flex items-center justify-center gap-1">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+          <span>واجهة المستفيد</span>
+        </button>
+        <button onclick="switchTab('ambassadors')" id="tab-ambassadors" class="w-1/3 py-3 text-center font-medium text-emerald-100 hover:text-white border-b-4 border-transparent transition flex items-center justify-center gap-1">
+          <i class="fa-solid fa-user-shield"></i>
+          <span>سفراء تيسير</span>
+        </button>
+        <button onclick="switchTab('donors')" id="tab-donors" class="w-1/3 py-3 text-center font-medium text-emerald-100 hover:text-white border-b-4 border-transparent transition flex items-center justify-center gap-1">
+          <i class="fa-solid fa-[#2ecc71] fa-clipboard-list"></i>
+          <span>لوحة التبرعات المباشرة</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ================= المحتوى الرئيسي ================= -->
+  <main class="max-w-md mx-auto px-4 mt-4 flex flex-col gap-4">
+
+    <!-- 1. واجهة المستفيد -->
+    <div id="section-beneficiary" class="flex flex-col gap-4">
+
+      <!-- الآية الكريمة وعبارة الترحيب -->
+      <div class="bg-emerald-50/70 border border-emerald-100 rounded-2xl p-4 text-center flex flex-col gap-2 shadow-sm">
+        <p class="text-xs text-[#0f685c] font-bold bg-white/80 py-1.5 px-3 rounded-xl border border-emerald-100 inline-block mx-auto">
+          ( سَيَجْعَلُ اللَّهُ بَعْدَ عُسْرٍ يُسْرًا )
+        </p>
+        <h2 class="text-sm font-bold text-gray-800">مرحباً بك في تطبيق تيسير 🤍</h2>
+        <p class="text-[11px] text-gray-500">بوابتك الذكية للوصول السريع إلى الخدمات الطبية، المنصات الحكومية الرسمية، وتسجيل التبرعات الحية</p>
+        
+        <!-- حقل البحث الذكي -->
+        <div class="relative mt-1">
+          <input type="text" placeholder="بحث السريع: اكتب (دم، شفاء، إحسان، تطوع...)" class="w-full p-2.5 pr-9 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#0f685c] focus:outline-none bg-white shadow-inner">
+          <i class="fa-solid fa-magnifying-glass text-gray-400 absolute right-3 top-3 text-xs"></i>
+        </div>
+      </div>
+
+      <!-- أرقام الطوارئ المباشرة -->
+      <div class="grid grid-cols-2 gap-3">
+        <!-- الإسعاف الهلال الأحمر -->
+        <a href="tel:997" class="bg-red-600 text-white rounded-2xl p-3.5 flex flex-col items-center justify-center text-center shadow-md hover:bg-red-700 transition">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fa-solid fa-truck-medical text-lg"></i>
+            <span class="font-bold text-lg tracking-wider">997</span>
+          </div>
+          <span class="text-[11px] text-red-100 font-medium">الإسعاف الهلال الأحمر</span>
+        </a>
+
+        <!-- طوارئ واستشارات الصحة -->
+        <a href="tel:937" class="bg-[#0f685c] text-white rounded-2xl p-3.5 flex flex-col items-center justify-center text-center shadow-md hover:bg-[#0b4d44] transition">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fa-solid fa-headset text-lg"></i>
+            <span class="font-bold text-lg tracking-wider">937</span>
+          </div>
+          <span class="text-[11px] text-emerald-100 font-medium">طوارئ واستشارات الصحة</span>
+        </a>
+      </div>
+
+      <!-- زر منصة صحتي العريض -->
+      <a href="https://www.moh.gov.sa" target="_blank" class="bg-[#0077b6] hover:bg-[#023e8a] text-white font-bold rounded-2xl p-3.5 flex items-center justify-center gap-2 shadow-sm transition">
+        <i class="fa-solid fa-mobile-screen text-base"></i>
+        <span class="text-xs">منصة صحّي</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+
+      <!-- كرت 1: منصة شفاء -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="bg-emerald-50 text-[#0f685c] p-2.5 rounded-xl">
+            <i class="fa-solid fa-[#0f685c] fa-hand-holding-medical text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">منصة شفاء (الأجهزة والعلاج)</h3>
+            <p class="text-gray-500 text-[11px] mt-0.5">المنصة الحكومية المعتمدة لتوفير الأجهزة الطبية، الكراسي المتحركة، وتغطية تكاليف علاج المحتاجين.</p>
+          </div>
+        </div>
+        <a href="https://shifa.sa" target="_blank" class="bg-emerald-50 hover:bg-emerald-100 text-[#0f685c] border border-emerald-200 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-between mt-1">
+          <span>فتح منصة شفاء</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- كرت 2: منصة إحسان -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="bg-amber-50 text-amber-600 p-2.5 rounded-xl">
+            <i class="fa-solid fa-shirt text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">منصة إحسان (تبرع الملابس والعيني)</h3>
+            <p class="text-gray-500 text-[11px] mt-0.5">المنصة الوطنية الموثوقة للتبرع بكسوة العيد، الملابس الفائضة، السلال الغذائية، والمستلزمات الضرورية للأسر.</p>
+          </div>
+        </div>
+        <a href="https://ehsan.sa" target="_blank" class="bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-between mt-1">
+          <span>فتح منصة إحسان</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- كرت 3: خريطة أقرب مستشفى -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="bg-sky-50 text-sky-600 p-2.5 rounded-xl">
+            <i class="fa-solid fa-map-location-dot text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">خريطة أقرب مستشفى ومركز صحي</h3>
+            <p class="text-gray-500 text-[11px] mt-0.5">تحديد موقعك الجغرافي وتوجيهك فوراً لأقرب مستشفى حكومي، مركز صحي، أو طوارئ عبر خرائط جوجل.</p>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=مستشفى+حكومي+أو+مركز+صحي" target="_blank" class="bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-between mt-1">
+          <span>فتح الخريطة الفورية</span>
+          <i class="fa-solid fa-location-arrow text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- كرت 4: المنصة الوطنية للعمل التطوعي -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="bg-purple-50 text-purple-600 p-2.5 rounded-xl">
+            <i class="fa-solid fa-user-group text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">المنصة الوطنية للعمل التطوعي</h3>
+            <p class="text-gray-500 text-[11px] mt-0.5">المنصة الرسمية المعتمدة للفرص التطوعية الصحية وإغناء المجتمع بالفرص الموثوقة.</p>
+          </div>
+        </div>
+        <a href="https://nvg.gov.sa" target="_blank" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-between mt-1">
+          <span>فتح المنصة الوطنية للتطوع</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- كرت 5: الرعاية الصحية المنزلية (مع النافذة المنبثقة) -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="bg-teal-50 text-teal-600 p-2.5 rounded-xl">
+            <i class="fa-solid fa-house-medical text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">الرعاية الصحية المنزلية (وزارة الصحة)</h3>
+            <p class="text-gray-500 text-[11px] mt-0.5">خدمات الزيارات المنزلية، الفحوصات، ومتابعة كبار السن وذوي الاحتياجات الخاصة في منازلهم.</p>
+          </div>
+        </div>
+        <button onclick="openModal('homecare-modal')" class="bg-teal-50 hover:bg-teal-100 text-teal-700 border border-teal-200 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-between mt-1">
+          <span>طلب الرعاية المنزلية</span>
+          <i class="fa-solid fa-angle-left text-[10px]"></i>
+        </button>
+      </div>
+
+      <!-- كرت 6: بنوك الدم والتبرع (مع النافذة المنبثقة) -->
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <div class="bg-rose-50 text-rose-600 p-2.5 rounded-xl">
+            <i class="fa-solid fa-droplet text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">بنوك الدم والتبرع (وزارة الصحة)</h3>
+            <p class="text-gray-500 text-[11px] mt-0.5">حجز موعد رسمي للتبرع بالدم، معرفة الفصائل المطلوبة عاجلاً، والوصول لأقرب بنك دم معتمد.</p>
+          </div>
+        </div>
+        <button onclick="openModal('bloodbank-modal')" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-between mt-1">
+          <span>حجز موعد تبرع</span>
+          <i class="fa-solid fa-angle-left text-[10px]"></i>
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- 2. سفراء تيسير -->
+    <div id="section-ambassadors" class="flex flex-col gap-4 hidden">
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-3">
+        <div class="flex justify-between items-center">
+          <span class="bg-emerald-50 text-[#0f685c] text-xs px-2.5 py-1 rounded-lg font-bold">مجتمعي</span>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800 text-base">ركن سفراء تيسير المجتمعي</h3>
+          <p class="text-xs text-gray-500 mt-1 leading-relaxed">انضم لنخبة المتطوعين الميدانيين لتيسير أعمال الخير في أحياء المملكة.</p>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-100 rounded-xl p-3 text-xs text-amber-800 flex gap-2 items-start">
+          <i class="fa-solid fa-lightbulb text-amber-500 mt-0.5"></i>
+          <p><strong>فكرة الركن:</strong> هل لديك الرغبة في مساعدة جيرانك أو تيسير إيصال التبرعات للمحتاجين في حيك؟ سجل معنا لتكون "سفير تيسير الميداني".</p>
+        </div>
+
+        <form class="flex flex-col gap-3 mt-1">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">الاسم الكريم *</label>
+            <input type="text" placeholder="مثال: فهد..." class="w-full p-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#0f685c] focus:outline-none bg-gray-50">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">المدينة / الحي *</label>
+            <input type="text" placeholder="مثال: الرياض - حي الورود" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#0f685c] focus:outline-none bg-gray-50">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">رقم التواصل *</label>
+            <input type="text" placeholder="05xxxxxxxx" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#0f685c] focus:outline-none bg-gray-50" dir="ltr">
+          </div>
+          <button type="button" onclick="alert('تم تسجيلك بنجاح ضمن سفراء تيسير!')" class="w-full bg-[#0f685c] hover:bg-[#0b4d44] text-white font-bold py-2.5 rounded-xl text-xs transition shadow-sm mt-1">
+            الانضمام لسفير تيسير رسمياً
+          </button>
+        </form>
+
+        <div class="mt-3 pt-3 border-t border-gray-100">
+          <h4 class="font-bold text-xs text-gray-700 mb-2">قائمة السفراء المسجلين بالمبادرة:</h4>
+          <div class="overflow-x-auto">
+            <table class="w-full text-right text-[11px]">
+              <thead class="bg-gray-50 text-gray-500 border-b">
+                <tr>
+                  <th class="p-2">اسم السفير</th>
+                  <th class="p-2">المدينة / الحي</th>
+                  <th class="p-2">الحالة</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y text-gray-700">
+                <tr>
+                  <td class="p-2 font-bold">فهد (مؤسس المبادرة)</td>
+                  <td class="p-2">المملكة العربية السعودية</td>
+                  <td class="p-2"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-bold">سفير معتمد</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- 3. لوحة التبرعات المباشرة -->
+    <div id="section-donors" class="flex flex-col gap-4 hidden">
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col gap-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">لوحة التبرعات والطلبات الحية</h3>
+            <p class="text-[11px] text-gray-400">تحدث فوراً مع كل تبرع جديد يتم تسجيله</p>
+          </div>
+          <button class="bg-[#2ecc71] text-[#0f685c] font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow-sm">
+            <i class="fa-solid fa-plus text-xs"></i> إضافة تبرع جديد
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-100">
+            <span class="block text-base font-bold text-[#0f685c]">1</span>
+            <span class="text-[10px] text-gray-500">إجمالي التبرعات</span>
+          </div>
+          <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-100">
+            <span class="block text-base font-bold text-[#2ecc71]">1</span>
+            <span class="text-[10px] text-gray-500">تبرعات الدم</span>
+          </div>
+          <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-100">
+            <span class="block text-base font-bold text-amber-600">0</span>
+            <span class="text-[10px] text-gray-500">أجهزة ومستلزمات</span>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-right text-[11px]">
+            <thead class="bg-gray-50 text-gray-500 border-b">
+              <tr>
+                <th class="p-2">نوع التبرع (دم / أجهزة)</th>
+                <th class="p-2">اسم المتبرع الكريم</th>
+                <th class="p-2">المدينة / المنطقة</th>
+                <th class="p-2">الحالة</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y text-gray-700">
+              <tr>
+                <td class="p-2 font-bold text-red-600">🩸 تبرع بالدم (فصيلة O+)</td>
+                <td class="p-2">فهد</td>
+                <td class="p-2">السعودية</td>
+                <td class="p-2"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-bold">مكتمل ومسجل</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-2 pt-3 border-t border-gray-100 flex flex-col gap-2">
+          <h4 class="font-bold text-xs text-gray-700">روابط المنصات الحكومية الرسمية:</h4>
+          <a href="https://nvg.gov.sa" target="_blank" class="bg-gray-50 hover:bg-gray-100 p-2.5 rounded-xl border border-gray-200 text-xs text-[#0f685c] font-bold flex items-center justify-between transition">
+            <span>المنصة الوطنية للعمل التطوعي</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+          <a href="https://shifa.sa" target="_blank" class="bg-gray-50 hover:bg-gray-100 p-2.5 rounded-xl border border-gray-200 text-xs text-[#0f685c] font-bold flex items-center justify-between transition">
+            <span>منصة شفاء الطبية</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- ================= النوافذ المنبثقة (Modals) ================= -->
+
+  <!-- نافذة الرعاية الصحية المنزلية -->
+  <div id="homecare-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-xs w-full p-5 text-center flex flex-col gap-3 shadow-2xl animate-fade-in">
+      <div class="bg-teal-50 text-[#0f685c] w-12 h-12 rounded-2xl flex items-center justify-center mx-auto text-xl">
+        <i class="fa-solid fa-house-medical"></i>
+      </div>
+      <h3 class="font-bold text-gray-800 text-base">خدمة الرعاية الصحية المنزلية</h3>
+      <p class="text-gray-500 text-xs leading-relaxed">تأمين الرعاية الطبية لكبار السن والمرضى في منازلهم عبر الفرق الطبية المتخصصة لوزارة الصحة.</p>
+      
+      <div class="flex flex-col gap-2 mt-2">
+        <a href="tel:937" class="bg-[#0f685c] text-white py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <span>اتصال مباشر برقم 937</span>
+        </a>
+        <a href="https://www.moh.gov.sa" target="_blank" class="bg-teal-50 text-[#0f685c] border border-teal-200 py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-globe"></i>
+          <span>زيارة البوابة الرسمية</span>
+        </a>
+      </div>
+
+      <button onclick="closeModal('homecare-modal')" class="text-xs text-gray-400 font-bold mt-1 hover:text-gray-600">إغلاق النافذة</button>
+    </div>
+  </div>
+
+  <!-- نافذة بنوك الدم والتبرع -->
+  <div id="bloodbank-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-xs w-full p-5 text-center flex flex-col gap-3 shadow-2xl animate-fade-in">
+      <div class="bg-rose-50 text-rose-600 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto text-xl">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+      <h3 class="font-bold text-gray-800 text-base">بنوك الدم والتبرع</h3>
+      <p class="text-gray-500 text-xs leading-relaxed">ساهم في إنقاذ حياة عبر حجز مواعيد التبرع بالدم عبر المنصات والمستشفيات المعتمدة.</p>
+      
+      <div class="flex flex-col gap-2 mt-2">
+        <a href="https://www.moh.gov.sa" target="_blank" class="bg-rose-600 text-white py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>حجز موعد عبر صحتي</span>
+        </a>
+        <a href="tel:937" class="bg-rose-50 text-rose-700 border border-rose-200 py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-headset"></i>
+          <span>استفسار بمركز 937</span>
+        </a>
+      </div>
+
+      <button onclick="closeModal('bloodbank-modal')" class="text-xs text-gray-400 font-bold mt-1 hover:text-gray-600">إغلاق النافذة</button>
+    </div>
+  </div>
+
+
+  <!-- ================= جافاسكريبت لتبديل التبويبات والمودال ================= -->
+  <script>
+    function switchTab(tabName) {
+      document.getElementById('section-beneficiary').classList.add('hidden');
+      document.getElementById('section-ambassadors').classList.add('hidden');
+      document.getElementById('section-donors').classList.add('hidden');
+
+      document.getElementById('tab-beneficiary').className = "w-1/3 py-3 text-center font-medium text-emerald-100 hover:text-white border-b-4 border-transparent transition flex items-center justify-center gap-1";
+      document.getElementById('tab-ambassadors').className = "w-1/3 py-3 text-center font-medium text-emerald-100 hover:text-white border-b-4 border-transparent transition flex items-center justify-center gap-1";
+      document.getElementById('tab-donors').className = "w-1/3 py-3 text-center font-medium text-emerald-100 hover:text-white border-b-4 border-transparent transition flex items-center justify-center gap-1";
+
+      if (tabName === 'beneficiary') {
+        document.getElementById('section-beneficiary').classList.remove('hidden');
+        document.getElementById('tab-beneficiary').className = "w-1/3 py-3 text-center font-bold border-b-4 border-[#2ecc71] text-white transition flex items-center justify-center gap-1";
+      } else if (tabName === 'ambassadors') {
+        document.getElementById('section-ambassadors').classList.remove('hidden');
+        document.getElementById('tab-ambassadors').className = "w-1/3 py-3 text-center font-bold border-b-4 border-[#2ecc71] text-white transition flex items-center justify-center gap-1";
+      } else if (tabName === 'donors') {
+        document.getElementById('section-donors').classList.remove('hidden');
+        document.getElementById('tab-donors').className = "w-1/3 py-3 text-center font-bold border-b-4 border-[#2ecc71] text-white transition flex items-center justify-center gap-1";
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
